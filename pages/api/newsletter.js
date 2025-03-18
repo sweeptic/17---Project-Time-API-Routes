@@ -1,6 +1,5 @@
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    console.log('req.body', req.body.email);
     const userEmail = req.body.email;
 
     if (!userEmail || !userEmail.includes('@')) {
@@ -8,7 +7,6 @@ export default function handler(req, res) {
       return;
     }
 
-    console.log(userEmail);
     res.status(201).json({ message: 'Signed up' });
   }
 }

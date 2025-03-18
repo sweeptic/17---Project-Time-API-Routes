@@ -19,8 +19,6 @@ function FilteredEventsPage(props) {
     'https://next-14-9c5d4-default-rtdb.europe-west1.firebasedatabase.app/sales/events.json',
     (url) =>
       fetch(url).then((res) => {
-        console.log('RES', res);
-
         return res.json();
       })
   );
