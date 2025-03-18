@@ -9,9 +9,13 @@ export default async function handler(req, res) {
       return;
     }
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://mongouser123:Hardfloor888888@cluster0.5mx6g.mongodb.net/newsletter?retryWrites=true&w=majority&appName=Cluster0'
+    const client = new MongoClient(
+      'mongodb+srv://mongouser123:Hardfloor888888@cluster0.5mx6g.mongodb.net/events?retryWrites=true&w=majority&appName=Cluster0'
     );
+
+    // const client = await MongoClient.connect(
+    //   'mongodb+srv://mongouser123:Hardfloor888888@cluster0.5mx6g.mongodb.net/newsletter?retryWrites=true&w=majority&appName=Cluster0'
+    // );
 
     const db = client.db();
     await db.collection('emails').insertOne({ email: userEmail });
