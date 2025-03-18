@@ -28,20 +28,10 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const dummyList = [
-      {
-        id: 'c1',
-        name: 'Max',
-        text: 'Lorem ipsum dolor sit amet.',
-      },
-      {
-        id: 'c2',
-        name: 'Manuel',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, ad!',
-      },
-    ];
+    const db = client.db();
+    const documents = await db.collection('comments').find().sort({ _id: -1 }).toArray();
 
-    res.status(200).json({ comments: dummyList });
+    res.status(200).json({ comments: documents });
   }
 
   client.close();
